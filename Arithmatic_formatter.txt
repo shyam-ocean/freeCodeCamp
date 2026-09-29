@@ -1,0 +1,40 @@
+>> Arithmatic arrangement - explained
+
+>>what to do,
+simple math problems given as strings needs to be arranged and it gives 
+outputs if it passes the given conditions. Need to create a function for the same.
+
+Eg:
+    arithmetic_arranger(["32+698", "3801-2"], T)
+
+>>output:
+      32      3801
+    +698    -   2
+    -----    ------
+     730      3799
+
+ problems: a list of strings = "number operator number"
+show_answers:  True/False. If True, the answers appear on a 4th line.
+
+Rules,
+1-not >5 problems - 'Error: Too many problems.'
+2-operator is + or - only - "Error: Operator must be '+' or '-' "
+3-numbers are digits only  - 'Error: Numbers must only contain digits.'
+4- <4 digits per number - 'Error: Numbers cannot be more than 4 digits.'
+
+working,
+check the number of problems.
+create four empty lists, one for each output row: top numbers, operator + bottom numbers, dashes, answers.
+for each problem:
+   split it into first number, operator, second number.
+   Run the validation.
+   Work out the column width: the longest number + 2(one for the operator, one space for padding).
+   right-align each part to that width using rjust():
+        line_1: the first number
+        line 2: the operator followed by the second number
+        dash line: dashes
+   if show_answers is True, calculate the result and right-align.
+join the items of each row with 4 spaces b/w the problems.
+join all rows and return the final string.
+
+------------

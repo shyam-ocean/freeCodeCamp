@@ -1,0 +1,37 @@
+>>>problem
+
+Write a function named add_time that takes in two required parameters and one optional parameter:
+
+-a start time in the 12-hour clock format (ending in AM or PM)
+-a duration time that indicates the number of hours and minutes
+-(optional) a starting day of the week, case insensitive
+The function should add the duration time to the start time and return the result.
+
+If the result will be the next day, it should show (next day) after the time. 
+If the result will be more than one day later, it should show (n days later) after 
+the time, where "n" is the number of days later.
+
+If the function is given the optional starting day of the week parameter, 
+then the output should display the day of the week of the result. The day of 
+the week in the output should appear after the time and before the number of days later.
+
+>>> code
+1-extract and convert to 24-hour time
+Split the input string into numbers and period (am/pm). 
+Add 12 to any pm hour (except 12 pm) and set 12 am to 0 so standard addition is good.
+
+>2-Add Duration and extra minutes
+Add start minutes to duration minutes. If the total is >=60, 
+subtract 60 and add 1 to the hrs.
+
+3- find days passed and final hr
+>Days passed- Divide total hours by 24 using floor division (hours //24).
+new time Use remainder division (hours %24) to keep the hour within 0to 23,
+
+>>Convert back to 12-hour
+hours from 12 to 23 become pm (subtract 12 if over 12).
+Hours from 0 to 11 become AM (change 0 to 12).
+aad minutes under 10 with a leading zero ( 3 becomes 03).
+
+Day of week - move forward in the 7day cycle using (start + day_passed) % 7.
+add (next day) if 1 day passed, or(n days) if more days passed.
